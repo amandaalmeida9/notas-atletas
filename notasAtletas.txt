@@ -1,0 +1,50 @@
+let atletas = [
+ {
+   nome: "Cesar Abascal",
+   notas: [10, 9.34, 8.42, 10, 7.88]
+ },
+ {
+   nome: "Fernando Puntel",
+   notas: [8, 10, 10, 7, 9.33]
+ },
+ {
+   nome: "Daiane Jelinsky",
+   notas: [7, 10, 9.5, 9.5, 8]
+ },
+ {
+   nome: "Bruno Castro",
+   notas: [10, 10, 10, 9, 9.5]
+ }
+];
+
+function calcularMedia(notas) {
+  // Ordena as notas em ordem crescente
+  notas.sort(function(a, b) {
+    return a - b;
+  });
+
+  // Remove a maior e a menor nota
+  let notasIntermediarias = notas.slice(1, 4);
+
+  // Calcula a média das notas intermediárias
+  let media = notasIntermediarias.reduce((acc, val) => acc + val, 0) / notasIntermediarias.length;
+
+  // Formata a média para três casas decimais
+  return media.toFixed(3);
+}
+
+// Itera sobre cada atleta
+for (let i = 0; i < atletas.length; i++) {
+  let atleta = atletas[i];
+  let nome = atleta.nome;
+  let notas = atleta.notas;
+
+  // Calcula a média válida
+  let mediaValida = calcularMedia(notas);
+
+  // Formata a saída conforme especificação
+  console.log(`Atleta: ${nome}`);
+  console.log(`Notas Obtidas: ${notas}`);
+  console.log(`Média Válida: ${mediaValida}`);
+  console.log();
+}
